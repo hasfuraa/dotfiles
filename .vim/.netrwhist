@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/local/home/hasfura/megatron_workspace/src/AGIEmergeMegatronLM/experimental/users/hasfura/configs'
+let g:netrw_dirhist_6='/local/home/hasfura/megatron_workspace/src/AGIEmergeMegatronLM/experimental/users/hasfura'
+let g:netrw_dirhist_5='/local/home/hasfura/megatron_workspace/src/AGIEmergeMegatronLM/experimental/users/hasfura/configs'
+let g:netrw_dirhist_4='/local/home/hasfura/megatron_workspace/src'
+let g:netrw_dirhist_3='/local/home/hasfura/megatron_workspace/src/AGIEmergeMegatronLM'
+let g:netrw_dirhist_2='/local/home/hasfura/megatron_workspace/src/AGIEmergeMegatronLM/experimental'
+let g:netrw_dirhist_1='/local/home/hasfura/megatron_workspace/src/AGIEmergeMegatronLM/build'
