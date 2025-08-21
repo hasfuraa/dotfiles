@@ -1,7 +1,32 @@
-# autocomplete
-autoload -U compinit promptinit
-compinit
-promptinit
+# Enable vi keybindings (editing-mode vi, keymap vi)
+bindkey -v
 
-# Set prompt to "grml" theme
-prompt grml
+# Map "jj" in insert mode to escape to normal mode
+bindkey -M viins 'jj' vi-cmd-mode
+
+# Make sure can still reverse search after vim keybindings.
+bindkey "^R" history-incremental-search-backward
+
+# History options.
+setopt append_history
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+HISTSIZE=10000
+HISTFILESIZE=20000
+
+alias findh='find . -iname'
+alias findr='sudo find / -iname'
+
+up-history-bol()   { zle up-line-or-history;   zle beginning-of-line }
+down-history-bol() { zle down-line-or-history; zle beginning-of-line }
+zle -N up-history-bol
+zle -N down-history-bol
+
+# Bind in vi command mode
+bindkey -M vicmd 'k' up-history-bol
+bindkey -M vicmd 'j' down-history-bol
+
+setopt nomenucomplete
+unsetopt menucomplete
+
+setopt interactivecomments
