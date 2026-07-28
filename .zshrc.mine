@@ -36,7 +36,8 @@ autoload -U colors && colors
 # Function to check for dirty git state
 git_dirty() {
   if git rev-parse --is-inside-work-tree &>/dev/null; then
-    git diff --quiet --ignore-subst-dircache &>/dev/null || echo "*"
+    # Checks for staged, unstaged, and untracked changes
+    [[ -n $(git status --porcelain 2>/dev/null) ]] && echo "*"
   fi
 }
 
