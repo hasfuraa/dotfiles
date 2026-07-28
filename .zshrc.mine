@@ -29,4 +29,25 @@ bindkey -M vicmd 'j' down-history-bol
 setopt nomenucomplete
 unsetopt menucomplete
 
+# Enable prompt substitution and colors
+setopt prompt_subst
+autoload -U colors && colors
+
+# Function to check for dirty git state
+git_dirty() {
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    git diff --quiet --ignore-subst-dircache &>/dev/null || echo "*"
+  fi
+}
+
+# Function to show active python virtual environment name
+venv_name() {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    echo "(%F{cyan}${VIRTUAL_ENV:t}%f) "
+  fi
+}
+
+# Set the prompt line
+PROMPT='$(venv_name)%F{green}%~%f$(git_dirty) %# '
+
 setopt interactivecomments
